@@ -23,7 +23,7 @@
     </bean>  
 
 
-<bean id = "mysessionFactory" class="org.springframework.orm.hibernate5.LocalSessionFactoryBean">
+<bean id = "mysessionFactory" class="org.springframework.orm.hibernate5.LocalSessionFactoryBean"> 
     <property name="dataSource" ref="dataSource" ></property>  
 
     <property name = "mappingResources">
@@ -42,7 +42,6 @@
           <prop key="hibernate.dialect">org.hibernate.dialect.MySQLDialect</prop>  
           <prop key="hibernate.show_sql">true</prop>
           <prop key="hibernate.connection.autocommit">true</prop>
-          
         </props>
     </property>
 

@@ -1,19 +1,20 @@
 package com.banking.account.creation;
 
 import java.util.Date;
+
 import java.util.Set;
 import com.banking.cc.transactions.authorize.CreditCard;
 import com.banking.login.Credentials;
-
-import com.banking.money.transaction.Accounts;
+import com.banking.money.transaction.Account;
 import lombok.ToString;
 
 /**
- * @author Dipanjan Sengupta
+ * @author Dipanjan Sengupta  
  * @purpose - This POJO represents the Customer Object and is mapped to customer class
  */
 
 @ToString
+
 public class Customer {
 	
 	private int customerId;
@@ -21,14 +22,19 @@ public class Customer {
 	private Date dateOfBirth;
 	private String address;
 	private String emailId;
-	private Set <Accounts> allAccountsHeld;
-	
-	
+	private Set <Account> allAccountsHeld;
+	CreditCard creditCard;
 	Credentials credentials;
 	
-	
-	CreditCard creditCardBean;
-	
+    public CreditCard getCreditCard() {
+		return creditCard;
+	}
+	public void setCreditCard(CreditCard creditCard) {
+		this.creditCard = creditCard;
+	}
+	public Customer() {
+		
+	}
 	public Credentials getCredentials() {
 		return credentials;
 	}
@@ -37,22 +43,23 @@ public class Customer {
 		this.credentials = credentials;
 	}
 
-	public Set<Accounts> getAllAccountsHeld() {
+	public Set<Account> getAllAccountsHeld() {
 		return allAccountsHeld;
 	}
 
-	public void setAllAccountsHeld(Set<Accounts> allAccountsHeld) {
+	public void setAllAccountsHeld(Set<Account> allAccountsHeld) {
 		this.allAccountsHeld = allAccountsHeld;
 	}
 
 	public Customer(String userName, Date dateOfBirth, String address, String emailId,
-			Set <Accounts> allAccountsHeld, Credentials credentials) {
+			Set <Account> allAccountsHeld,  CreditCard creditCard, Credentials credentials) {
 		super();
 		this.userName = userName;
 		this.dateOfBirth = dateOfBirth;
 		this.address = address;
 		this.emailId = emailId;
 		this.allAccountsHeld = allAccountsHeld;
+		this.creditCard = creditCard;
 		this.credentials = credentials;
 	}
 
@@ -63,9 +70,6 @@ public class Customer {
 		this.emailId = emailId;
 	}
 	
-	public Customer() {
-		
-	}
 	public Customer(int customerId) {
 		this.customerId = customerId;
 	}
@@ -99,21 +103,6 @@ public class Customer {
 	}
 	public void setEmailId(String emailId) {
 		this.emailId = emailId;
-	}
-
-	public CreditCard getCreditCardBean() {
-		return creditCardBean;
-	}
-
-	public void setCreditCardBean(CreditCard creditCardBean) {
-		this.creditCardBean = creditCardBean;
-	}
-
-	@Override
-	public String toString() {
-		return "Customer [customerId=" + customerId + ", userName=" + userName + ", dateOfBirth=" + dateOfBirth
-				+ ", address=" + address + ", emailId=" + emailId + ", allAccountsHeld=" + allAccountsHeld
-				+ ", credentials=" + credentials + ", creditCardBean=" + creditCardBean + "]";
 	}
 	
 }

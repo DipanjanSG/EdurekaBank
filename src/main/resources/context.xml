@@ -5,29 +5,24 @@
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
 		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.3.xsd">
 		
-<import resource="classpath:hibernateTemplate.xml"/>
+<import resource="classpath:hibernateTemplate.xml"/> 
 <aop:aspectj-autoproxy proxy-target-class="true"/>
 <bean id = "creditCardHelperBean" class = "com.banking.cc.transactions.authorize.CreditCardHelper"/>
 <bean id = "createTransactionsHelperBean" class = "com.banking.money.transaction.TransactionsHelper"/>
-
-<bean id = "createAccountDaoBean" class = "com.banking.account.creation.CustomerDaoImpl">
-	<property name="hibernateTemplate" ref="hibernateTemplate" />  
+<bean id = "createAccountDaoBean" class = "com.banking.account.creation.CustomerDaoImpl" autowire="byName">
+	
 </bean>
 
-<bean id = "createCreditCardTransactionsDaoBean" class = "com.banking.cc.transactions.authorize.CreditCardTransactionsDaoImpl">
-	<property name="hibernateTemplate" ref="hibernateTemplate" />  
+<bean id = "createCreditCardTransactionsDaoBean" class = "com.banking.cc.transactions.authorize.CreditCardTransactionsDaoImpl" autowire="byName">
 </bean>
 
-<bean id = "accountsDaoImplBean" class = "com.banking.money.transaction.AccountsDaoImpl">
-	<property name="hibernateTemplate" ref="hibernateTemplate" />  
+<bean id = "accountsDaoImplBean" class = "com.banking.money.transaction.AccountsDaoImpl" autowire="byName">
 </bean>
 
-<bean id = "transactionDaoImpl" class = "com.banking.money.transaction.TransactionDaoImpl">
-	<property name="hibernateTemplate" ref="hibernateTemplate" />  
+<bean id = "transactionDaoImpl" class = "com.banking.money.transaction.TransactionDaoImpl" autowire="byName">
 </bean>
 
-<bean id = "credentialsDaoImpl" class = "com.banking.login.CredentialsDaoImpl">
-	<property name="hibernateTemplate" ref="hibernateTemplate" />  
+<bean id = "credentialsDaoImpl" class = "com.banking.login.CredentialsDaoImpl" autowire="byName">
 </bean>
 
 <bean id = "authorizeCCTransactionsLogs" class="com.banking.logging.AuthorizeCCTransactionsLogs"/>
